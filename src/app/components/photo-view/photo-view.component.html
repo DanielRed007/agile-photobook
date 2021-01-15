@@ -1,0 +1,21 @@
+<div class="bg-dark">
+    <div class="container-fluid">
+        <div class="row">
+            <button class=" m-3 btn btn-small btn-warning m-2" [routerLink]="['/']"
+                routerLinkActive="router-link-active">Go Back</button>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="card p-4 m-3" *ngIf="photoData" style="width: 70%;">
+
+                    <img class="card-img-top" src="{{photoData.full_picture}}" alt="Card image cap" />
+                    <div class="mt-3">
+                        <h5>Author: {{photoData.author}}</h5><br>
+                        <h5>Camera: {{photoData.camera}}</h5>
+                        <h6>Tags: {{photoData.tags}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="bg-dark">
+    <div class="container">
+        <div class="row d-flex justify-content-center" *ngIf="imageList">
+            <h3 class="display-4 m-5 text-white">Click photos to explore!</h3>
+            <div class="col-10 mt-5">
+                <div class="d-flex justify-content-center" *ngFor="let card of imageList">
+                    <app-card [cardData]="card" (cardId)="getSingleCard($event)"></app-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
