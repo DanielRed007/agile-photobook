@@ -29,7 +29,7 @@ export class GridComponent implements OnInit {
     });
   }
 
-  getSingleCard($event):    void {
+  getSingleCard($event): void {
     this.router.navigateByUrl(`/photo/${$event}`);
   }
 
@@ -39,6 +39,5 @@ export class GridComponent implements OnInit {
     this.photoService.getPhotoData(this.page).subscribe((res: PhotoGrid) => {
       this.imageList = res.pictures;
     });
-    
   }
 }
