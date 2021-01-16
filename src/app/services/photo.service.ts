@@ -5,7 +5,7 @@ import { environment } from '../../environments/environment';
 import { PhotoGrid } from '../interface/interfaces';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class PhotoService {
   apiUrl = environment.apiUrl;
@@ -13,15 +13,22 @@ export class PhotoService {
 
   constructor(private http: HttpClient) {}
 
-  getPhotoData(): Observable<any> {
-    const token = localStorage.getItem('auth_data');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(this.apiUrl + '/images', { headers });
+  getPhotoData(page?: number): Observable<any> {
+    const token = localStorage.getItem("auth_data");
+    const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
+
+    let listUrl = this.apiUrl + "/images";
+
+    if(page){
+      listUrl += `?page=${page}`
+    }
+    
+    return this.http.get(listUrl, { headers });
   }
 
   getPhotoById(id: string) {
-    const token = localStorage.getItem('auth_data');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const token = localStorage.getItem("auth_data");
+    const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
     return this.http.get(this.apiUrl + `/images/${id}`, { headers });
   }
 }

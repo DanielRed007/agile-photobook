@@ -1,9 +1,16 @@
 <div class="bg-dark">
     <div class="container">
-        <div class="row d-flex justify-content-center" *ngIf="imageList">
+        <div class="row text-center">
             <h3 class="display-4 m-5 text-white">Click photos to explore!</h3>
-            <div class="col-10 mt-5">
-                <div class="d-flex justify-content-center" *ngFor="let card of imageList">
+        </div>
+        <div class="grid-block" *ngIf="imageList.length > 0">
+            <div class="row d-flex justify-content-center">
+                <div class="m-3">
+                    <pagination [totalItems]="30" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div *ngFor="let card of imageList">
                     <app-card [cardData]="card" (cardId)="getSingleCard($event)"></app-card>
                 </div>
             </div>
